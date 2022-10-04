@@ -1,2 +1,2 @@
 # SafeDesk_API
-Backend API for HelpDesk
+Backend API for SafeDesk
