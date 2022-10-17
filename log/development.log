@@ -304,3 +304,6 @@ Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 202
   ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
   [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
   ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 04:43:52 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mChore Load (0.6ms)[0m  [1m[34mSELECT "chores".* FROM "chores"[0m
