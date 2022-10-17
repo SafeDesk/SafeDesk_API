@@ -21,7 +21,7 @@ module SafeDesk
       g.orm :active_record, primary_key_type: :uuid
     end
 
-    config.hosts << "safedesk.herokuapp.com"
+    # config.hosts << "safedesk.herokuapp.com"
 
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
