@@ -1,0 +1,306 @@
+  [1m[35m (13.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sf_api_development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sf_api_test"[0m
+  [1m[35m (1369.0ms)[0m  [1m[35mCREATE DATABASE "sf_api_development" ENCODING = 'utf-8'[0m
+  [1m[35m (653.3ms)[0m  [1m[35mCREATE DATABASE "sf_api_test" ENCODING = 'utf-8'[0m
+  [1m[35m (612.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (108.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (17.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateChores (20221017202200)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5922056729360289420)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateChores (20221017202200)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5922056729360289420)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateChores (20221017202200)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "chores" CASCADE[0m
+  [1m[35m (87.0ms)[0m  [1m[35mCREATE TABLE "chores" ("id" uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY, "task_name" character varying, "points" integer, "category" character varying, "topic" character varying, "task_priority" integer, "date_completed" date, "chores_json" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5922056729360289420)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateChores (20221017202200)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (347.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (88.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "chores" CASCADE[0m
+  [1m[35m (108.6ms)[0m  [1m[35mCREATE TABLE "chores" ("id" uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY, "task_name" character varying, "points" integer, "category" character varying, "topic" character varying, "task_priority" integer, "date_completed" date, "chores_json" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "parents" CASCADE[0m
+  [1m[35m (65.3ms)[0m  [1m[35mCREATE TABLE "parents" ("id" uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "children" CASCADE[0m
+  [1m[35m (80.2ms)[0m  [1m[35mCREATE TABLE "children" ("id" uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying, "parent_id" uuid, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (35.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017202200"]]
+  [1m[36mTRANSACTION (18.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChildren (20221017210424)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (20.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017210424"]]
+  [1m[36mTRANSACTION (19.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateParents (20221017210430)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017210430"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (10.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-17 21:14:31.338444"], ["updated_at", "2022-10-17 21:14:31.338444"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:03:58 +0530
+  
+NameError (uninitialized constant SafeDesk):
+  
+config/routes.rb:6:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:19:13 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:11:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:21:59 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:11:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:22:01 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:11:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chore" for ::1 at 2022-10-18 03:22:03 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/chore"):
+  
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:22:07 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:11:in `block (2 levels) in <class:ChoresAPI>'
+Started POST "/api/v1/chores" for ::1 at 2022-10-18 03:22:19 +0530
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:22:23 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:11:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:22:42 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores/" for ::1 at 2022-10-18 03:22:45 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores/s" for ::1 at 2022-10-18 03:22:47 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/chores/s"):
+  
+Started GET "/api/v1/chores/" for ::1 at 2022-10-18 03:22:50 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:22:52 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:01 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:02 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:06 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:07 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:16 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:24 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/chores"):
+  
+Started GET "/api/v1/chore" for ::1 at 2022-10-18 03:23:26 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chore" for ::1 at 2022-10-18 03:23:43 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:23:47 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chore" for ::1 at 2022-10-18 03:24:07 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:12:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:24:50 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:14:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:24:51 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:14:in `block (2 levels) in <class:ChoresAPI>'
+Started POST "/api/v1/chores" for ::1 at 2022-10-18 03:24:57 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Changetab (20221017215928)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (127.5ms)[0m  [1m[35mDROP TABLE "chores"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "chores" CASCADE[0m
+  [1m[35m (131.5ms)[0m  [1m[35mCREATE TABLE "chores" ("id" uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY, "task_name" character varying, "description" character varying, "points" integer, "task_priority" integer, "date_completed" date, "chores_json" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017215928"]]
+  [1m[36mTRANSACTION (25.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/chores" for ::1 at 2022-10-18 03:33:37 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/chores" for ::1 at 2022-10-18 03:33:52 +0530
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:28:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:37:24 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (uninitialized constant SafeDesk::ChoresAPI::Chores):
+  
+app/api/v1/safe_desk/chores_api.rb:14:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:37:38 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mChore Load (0.6ms)[0m  [1m[34mSELECT "chores".* FROM "chores"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Addcol (20221017220905)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.7ms)[0m  [1m[35mALTER TABLE "chores" ADD "parent_id" uuid[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017220905"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5922056729360289420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/chores" for ::1 at 2022-10-18 03:40:14 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:29:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Create (101.2ms)[0m  [1m[32mINSERT INTO "chores" ("task_name", "description", "points", "task_priority", "date_completed", "chores_json", "created_at", "updated_at", "parent_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["task_name", "clean room"], ["description", nil], ["points", 10], ["task_priority", 4], ["date_completed", "2022-04-23"], ["chores_json", nil], ["created_at", "2022-10-17 22:10:14.744423"], ["updated_at", "2022-10-17 22:10:14.744423"], ["parent_id", nil]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:29:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (27.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:29:in `block (2 levels) in <class:ChoresAPI>'
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:40:26 +0530
+  [1m[36mChore Load (0.4ms)[0m  [1m[34mSELECT "chores".* FROM "chores"[0m
+Started GET "/api/v1/chores" for ::1 at 2022-10-18 03:40:32 +0530
+  [1m[36mChore Load (0.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores"[0m
+Started DELETE "/api/v1/chores/ca9464e2-a78e-47b7-bb8d-9ece970e0597" for ::1 at 2022-10-18 03:45:44 +0530
+  [1m[36mChore Load (14.9ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "ca9464e2-a78e-47b7-bb8d-9ece970e0597"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:58:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Destroy (36.7ms)[0m  [1m[31mDELETE FROM "chores" WHERE "chores"."id" = $1[0m  [["id", "ca9464e2-a78e-47b7-bb8d-9ece970e0597"]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:59:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/ca9464e2-a78e-47b7-bb8d-9ece970e0597" for ::1 at 2022-10-18 03:46:17 +0530
+Started PUT "/api/v1/chores/ca9464e2-a78e-47b7-bb8d-9ece970e0597" for ::1 at 2022-10-18 03:46:51 +0530
+Started PUT "/api/v1/chores/ca9464e2-a78e-47b7-bb8d-9ece970e0597" for ::1 at 2022-10-18 03:46:58 +0530
+  [1m[36mChore Load (0.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "ca9464e2-a78e-47b7-bb8d-9ece970e0597"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  
+ActiveRecord::RecordNotFound (Couldn't find Chore with 'id'=ca9464e2-a78e-47b7-bb8d-9ece970e0597):
+  
+app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+Started POST "/api/v1/chores" for ::1 at 2022-10-18 03:47:04 +0530
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:29:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Create (0.6ms)[0m  [1m[32mINSERT INTO "chores" ("task_name", "description", "points", "task_priority", "date_completed", "chores_json", "created_at", "updated_at", "parent_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["task_name", "clean room"], ["description", nil], ["points", 10], ["task_priority", 4], ["date_completed", "2022-04-23"], ["chores_json", nil], ["created_at", "2022-10-17 22:17:04.709054"], ["updated_at", "2022-10-17 22:17:04.709054"], ["parent_id", nil]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:29:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (13.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:29:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:47:14 +0530
+  [1m[36mChore Load (0.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Update (0.4ms)[0m  [1m[33mUPDATE "chores" SET "task_priority" = $1, "updated_at" = $2 WHERE "chores"."id" = $3[0m  [["task_priority", 5], ["updated_at", "2022-10-17 22:17:14.889580"], ["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (297.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:47:19 +0530
+  [1m[36mChore Load (0.4ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Update (0.5ms)[0m  [1m[33mUPDATE "chores" SET "task_priority" = $1, "updated_at" = $2 WHERE "chores"."id" = $3[0m  [["task_priority", 3], ["updated_at", "2022-10-17 22:17:19.751738"], ["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (15.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:47:30 +0530
+  [1m[36mChore Load (0.4ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:47:47 +0530
+  [1m[36mChore Load (0.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  
+NoMethodError (undefined method `pry' for #<Binding:0x00007f02bca5af80>
+Did you mean?  try):
+  
+app/api/v1/safe_desk/chores_api.rb:46:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:50:15 +0530
+  [1m[36mChore Load (0.2ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  
+NoMethodError (undefined method `pry' for #<Binding:0x00007f02c8ed4140>
+Did you mean?  try):
+  
+app/api/v1/safe_desk/chores_api.rb:46:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:50:28 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mChore Load (1.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:50:46 +0530
+  [1m[36mChore Load (0.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:54:35 +0530
+  [1m[36mChore Load (0.2ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Update (0.4ms)[0m  [1m[33mUPDATE "chores" SET "task_priority" = $1, "updated_at" = $2 WHERE "chores"."id" = $3[0m  [["task_priority", 4], ["updated_at", "2022-10-17 22:24:35.712082"], ["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+Started PUT "/api/v1/chores/b1838d8e-c969-43b6-9dab-9e12384d18fa" for ::1 at 2022-10-18 03:54:40 +0530
+  [1m[36mChore Load (0.3ms)[0m  [1m[34mSELECT "chores".* FROM "chores" WHERE "chores"."id" = $1 LIMIT $2[0m  [["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"], ["LIMIT", 1]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:44:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mChore Update (0.3ms)[0m  [1m[33mUPDATE "chores" SET "task_priority" = $1, "updated_at" = $2 WHERE "chores"."id" = $3[0m  [["task_priority", 2], ["updated_at", "2022-10-17 22:24:40.080276"], ["id", "b1838d8e-c969-43b6-9dab-9e12384d18fa"]]
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/v1/safe_desk/chores_api.rb:45:in `block (2 levels) in <class:ChoresAPI>'
