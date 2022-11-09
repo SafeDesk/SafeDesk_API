@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_220905) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_040911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -31,11 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_220905) do
     t.string "description"
     t.integer "points"
     t.integer "task_priority"
-    t.date "date_completed"
     t.json "chores_json"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "parent_id"
+    t.datetime "date_completed"
   end
 
   create_table "parents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

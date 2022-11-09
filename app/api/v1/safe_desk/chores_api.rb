@@ -37,7 +37,7 @@ module SafeDesk
       requires :task_name, type: String, desc: "Mailer Config Id"
       requires :points, type: Integer, desc: "Mailer Config Id"
       requires :task_priority, type: Integer, desc: "Mailer Config Id"
-      requires :date_completed, type: Date, desc: "Mailer Config Id"
+      requires :date_completed, desc: "Mailer Config Id"
       requires :id, type: String, desc: "Mailer Config Id"
       end
       put ":id" do
