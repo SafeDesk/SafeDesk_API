@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_040911) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_13_012023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -36,6 +36,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_040911) do
     t.datetime "updated_at", null: false
     t.uuid "parent_id"
     t.datetime "date_completed"
+    t.boolean "status", default: false
+    t.uuid "children_id"
+  end
+
+  create_table "homeworks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "task_name"
+    t.string "description"
+    t.integer "points"
+    t.integer "task_priority"
+    t.datetime "date_completed"
+    t.json "homework_json"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "parent_id"
+    t.boolean "status", default: false
+    t.uuid "children_id"
   end
 
   create_table "parents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -43,6 +59,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_040911) do
     t.string "last_name"
     t.string "email"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rewards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "parent_id"
+    t.uuid "children_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "rewards_json"
+    t.datetime "minutes"
+  end
+
+  create_table "volunteers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "task_name"
+    t.string "description"
+    t.integer "points"
+    t.json "volunteering_json"
+    t.uuid "parent_id"
+    t.uuid "children_id"
+    t.datetime "date_completed"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

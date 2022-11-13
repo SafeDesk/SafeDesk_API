@@ -6,6 +6,10 @@ module SafeDesk
     version 'v1', using: :path
 
       mount SafeDesk::ChoresAPI
+      mount SafeDesk::HomeworkAPI
+      mount SafeDesk::RewardsAPI
+      mount SafeDesk::VolunteerAPI
+      mount SafeDesk::RewardsAPI
 
   end
 end
