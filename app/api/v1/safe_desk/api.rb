@@ -131,6 +131,7 @@ module SafeDesk
       Thread.current[:user] = @user
     end
 
+      mount SafeDesk::SosAPI
       mount SafeDesk::ChoresAPI
       mount SafeDesk::HomeworkAPI
       mount SafeDesk::RewardsAPI
