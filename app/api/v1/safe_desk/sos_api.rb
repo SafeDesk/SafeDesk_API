@@ -6,7 +6,7 @@ module SafeDesk
 
     resource :sos do
 
-      desc 'Get List of Chores Data'
+      desc 'Get List of sos Data'
       params do
 
       end
@@ -18,7 +18,7 @@ module SafeDesk
 
       desc 'create sos'
       params do
-        requires :map_url, type: String, desc: "url"
+        requires :map_info, desc: "url"
       end
       post do
         params["parent_id"] = @parent.id
@@ -35,8 +35,8 @@ module SafeDesk
       end
       delete ":id" do
         sos = So.find params[:id]
-        updated_chore = sos.delete
-        return {message: "chore Deleted Successfully", status_code: 200}
+        updated_sos = sos.delete
+        return {message: "sos Deleted Successfully", status_code: 200}
       end
 
 
