@@ -11,7 +11,7 @@ module SafeDesk
 
       end
       get do
-        chores_list = Chore.all
+        chores_list = Chore.where(parent_id: @parent.id)
         present chores_list
       end
 

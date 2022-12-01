@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_13_012023) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_224654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -65,11 +65,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_012023) do
 
   create_table "rewards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "parent_id"
-    t.uuid "children_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "rewards_json"
     t.datetime "minutes"
+    t.uuid "child_id"
+    t.integer "unclaimed"
+    t.integer "redeemed"
   end
 
   create_table "volunteers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

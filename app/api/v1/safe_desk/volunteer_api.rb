@@ -11,7 +11,7 @@ module SafeDesk
 
       end
       get do
-        volunteer_list = Volunteer.all
+        volunteer_list = Volunteer.where(parent_id: @parent.id)
         present volunteer_list
       end
 
@@ -55,9 +55,6 @@ module SafeDesk
         updated_volunteer= volunteer.delete
         return {message: "volunteer Deleted Successfully", status_code: 200}
       end
-
-
-
 
 
 

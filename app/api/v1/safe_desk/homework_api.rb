@@ -8,10 +8,13 @@ module SafeDesk
 
       desc 'Get List of Homework Data'
       params do
+        optional :child_id, type: Integer, desc: "Child ID"
+        optional :parent_id, type: Integer, desc: "Child ID"
 
       end
       get do
-        homework_list = Homework.all
+        user = @parent
+        homework_list = Homework.where(parent_id: @parent.id)
         present homework_list
       end
 
@@ -27,6 +30,7 @@ module SafeDesk
       end
       post do
         homework = Homework.create(params)
+        homework.udpate(parent_id: @parent.id)
         return {message: "Homework Created Successfully", status_code: 200, Homework: homework}
       end
 
