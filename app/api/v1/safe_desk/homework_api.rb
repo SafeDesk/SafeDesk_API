@@ -30,7 +30,6 @@ module SafeDesk
       post do
         params["parent_id"] = @parent.id
         homework = Homework.create(params)
-        homework.udpate(parent_id: @parent.id)
         return {message: "Homework Created Successfully", status_code: 200, Homework: homework}
       end
 
