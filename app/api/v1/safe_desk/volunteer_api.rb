@@ -22,9 +22,9 @@ module SafeDesk
       requires :task_name, type: String, desc: "Mailer Config Id"
       requires :points, type: Integer, desc: "Mailer Config Id"
       requires :date_completed, type: Date, desc: "Mailer Config Id"
-      requires :parent_id, type: String, desc: "Mailer Config Id"
       end
       post do
+        params["parent_id"] = @parent.id
         volunteer = Volunteer.create(params)
         return {message: "volunteer Created Successfully", status_code: 200, volunteer: volunteer}
       end

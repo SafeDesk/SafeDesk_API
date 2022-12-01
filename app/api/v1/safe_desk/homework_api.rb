@@ -26,9 +26,9 @@ module SafeDesk
       requires :points, type: Integer, desc: "Mailer Config Id"
       requires :task_priority, type: Integer, desc: "Mailer Config Id"
       requires :date_completed, type: Date, desc: "Mailer Config Id"
-      requires :parent_id, type: String, desc: "Mailer Config Id"
       end
       post do
+        params["parent_id"] = @parent.id
         homework = Homework.create(params)
         homework.udpate(parent_id: @parent.id)
         return {message: "Homework Created Successfully", status_code: 200, Homework: homework}

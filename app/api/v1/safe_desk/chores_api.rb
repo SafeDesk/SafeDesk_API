@@ -23,9 +23,9 @@ module SafeDesk
       requires :points, type: Integer, desc: "Mailer Config Id"
       requires :task_priority, type: Integer, desc: "Mailer Config Id"
       requires :date_completed, type: Date, desc: "Mailer Config Id"
-      requires :parent_id, type: String, desc: "Mailer Config Id"
       end
       post do
+        params["parent_id"] = @parent.id
         chore = Chore.create(params)
         return {message: "Chore Created Successfully", status_code: 200, chore: chore}
       end
