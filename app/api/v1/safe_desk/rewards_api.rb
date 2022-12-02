@@ -52,7 +52,7 @@ module SafeDesk
         # requires :child_id, type: String, desc: "Mailer Config Id"
       end
       post "redeem" do
-        child = Child.find params[:child_id]
+        child = @child
         reward = child.reward
         reward.redeemed = reward.redeemed + reward.unclaimed
         reward.unclaimed = 0
