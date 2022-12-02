@@ -18,7 +18,7 @@ module SafeDesk
       desc 'mark completed'
       params do
         requires :task_id, type: String, desc: "Mailer Config Id"
-        requires :task_type, type: Integer, desc: "Mailer Config Id"
+        requires :task_type, type: String, desc: "Mailer Config Id"
         # requires :parent_id, type: String, desc: "Mailer Config Id"
         # requires :child_id, type: String, desc: "Mailer Config Id"
       end
