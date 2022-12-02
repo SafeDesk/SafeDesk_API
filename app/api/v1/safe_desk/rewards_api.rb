@@ -49,7 +49,7 @@ module SafeDesk
 
       desc 'redeem reward'
       params do
-        requires :child_id, type: String, desc: "Mailer Config Id"
+        # requires :child_id, type: String, desc: "Mailer Config Id"
       end
       post "redeem" do
         child = Child.find params[:child_id]
