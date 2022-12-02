@@ -12,7 +12,7 @@ module SafeDesk
       end
       get do
         chores_list = Chore.where(parent_id: @parent.id)
-        present chores_list
+        present chores_list.order(created_at: "DESC")
       end
 
       desc 'create chore'

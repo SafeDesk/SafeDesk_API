@@ -15,7 +15,7 @@ module SafeDesk
       get do
         user = @parent
         homework_list = Homework.where(parent_id: @parent.id)
-        present homework_list
+        present homework_list.order(created_at: "DESC")
       end
 
       desc 'create Homework'

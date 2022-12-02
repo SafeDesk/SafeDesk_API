@@ -12,7 +12,7 @@ module SafeDesk
       end
       get do
         volunteer_list = Volunteer.where(parent_id: @parent.id)
-        present volunteer_list
+        present volunteer_list.order(created_at: "DESC")
       end
 
       desc 'create Volunteer'
