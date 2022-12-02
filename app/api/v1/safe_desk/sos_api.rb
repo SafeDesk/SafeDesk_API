@@ -12,7 +12,7 @@ module SafeDesk
       end
       get do
         sos_list = So.where(parent_id: @parent.id)
-        present sos_list.order(created_at: desc)
+        present sos_list.order(created_at: "DESC")
       end
 
 
