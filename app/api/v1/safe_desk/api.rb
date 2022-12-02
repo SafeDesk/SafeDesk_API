@@ -38,7 +38,8 @@ module SafeDesk
       parent = Parent.where(params).first
       return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless parent.present?
       if parent.present?
-        { is_parent: true,
+        { status: true,
+          is_parent: true,
           parent: parent.as_json.except("password"),
           # mobile_no: parent.mobile_no,
           token: AuthToken.new.encode(
@@ -60,7 +61,8 @@ module SafeDesk
       child = Child.where(params).first
       return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless child.present?
       if child.present?
-        { is_parent: false,
+        { status: true,
+          is_parent: false,
           child: child.as_json.except("password"),
           parent: child.parent.as_json.except("password"),
           token: AuthToken.new.encode(
