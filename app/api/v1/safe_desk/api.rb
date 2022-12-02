@@ -39,7 +39,8 @@ module SafeDesk
       return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless parent.present?
       # parent = parent.authenticate(params[:password])
       if parent.present?
-        { entity: parent.as_json.except("email"),
+        { is_parent: true,
+          parent: parent.as_json.except("password"),
           # mobile_no: parent.mobile_no,
           token: AuthToken.new.encode(
             { parent_id: parent.id,
@@ -61,8 +62,9 @@ module SafeDesk
       # return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless child.present?
       # child = child.authenticate(params[:password])
       if child.present?
-        { entity: child,
-          parent: child.parent,
+        { is_parent: false,
+          child: child.as_json.except("password"),
+          parent: child.parent.as_json.except("password"),
           token: AuthToken.new.encode(
             { email: child.email,
               parent_id: child.parent_id,
