@@ -35,7 +35,7 @@ module SafeDesk
       requires :password
     end
     post "parent/login" do
-      parent = Parent.where(email: params[:email]).first
+      parent = Parent.where(params).first
       return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless parent.present?
       # parent = parent.authenticate(params[:password])
       if parent.present?
