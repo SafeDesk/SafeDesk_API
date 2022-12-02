@@ -37,7 +37,6 @@ module SafeDesk
     post "parent/login" do
       parent = Parent.where(params).first
       return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless parent.present?
-      # parent = parent.authenticate(params[:password])
       if parent.present?
         { is_parent: true,
           parent: parent.as_json.except("password"),
@@ -59,8 +58,7 @@ module SafeDesk
     end
     post 'child/login' do
       child = Child.where(params).first
-      # return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless child.present?
-      # child = child.authenticate(params[:password])
+      return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless child.present?
       if child.present?
         { is_parent: false,
           child: child.as_json.except("password"),
