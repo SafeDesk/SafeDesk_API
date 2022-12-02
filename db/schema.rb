@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_180021) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_02_191757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_180021) do
     t.datetime "date_completed"
     t.boolean "status", default: false
     t.uuid "children_id"
+    t.string "category"
   end
 
   create_table "homeworks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_180021) do
     t.uuid "parent_id"
     t.boolean "status", default: false
     t.uuid "children_id"
+    t.string "category"
   end
 
   create_table "parents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_180021) do
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
 end
