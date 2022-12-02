@@ -39,7 +39,8 @@ module SafeDesk
         end
 
         task.save
-        child = Child.find params[:child_id]
+
+        child = @child
         reward = child.reward
         reward.unclaimed = reward.unclaimed + task.points
         reward.save
