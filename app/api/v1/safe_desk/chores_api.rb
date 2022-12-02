@@ -26,6 +26,8 @@ module SafeDesk
       post do
         params["parent_id"] = @parent.id
         chore = Chore.create(params)
+        chore.category = "chore"
+        chore.save
         return { message: "Chore Created Successfully", status_code: 200, chore: chore }
       end
 

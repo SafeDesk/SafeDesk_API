@@ -43,6 +43,8 @@ module SafeDesk
       put ":id" do
         homework = Homework.find params[:id]
         homework.update(params)
+        homework.category = "homework"
+        homework.save
         return { message: "homework edited Successfully", status_code: 200, homework: homework }
       end
 

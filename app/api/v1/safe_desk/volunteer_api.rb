@@ -25,6 +25,8 @@ module SafeDesk
       post do
         params["parent_id"] = @parent.id
         volunteer = Volunteer.create(params)
+        volunteer.category = "volunteer"
+        volunteer.save
         return { message: "volunteer Created Successfully", status_code: 200, volunteer: volunteer }
       end
 
