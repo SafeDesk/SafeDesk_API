@@ -31,4 +31,10 @@ An option for setting up the Chores is a new feature that has been implemented. 
 This feature will allow parents and students both, to know what are the tasks to be completed by them so that tasks can be managed according to it on a timely basis.
 There will be additional features such asPuzzles for children and having rewards for them, to push them on a continuous learning journey.
 A Finance Tracker will be created to track all the fees, scholarships, etc.
-There will be security features that will be mentioned as the project progresses further.
+There will be security features that will be mentioned as the project progresses 
+
+The acceptance tests were made by us following up with candidates from other departments as well as Computer Science department.
+There were some questions based on which points were alloted.
+
+Other changes were made in code and new functionalities were added.
+Presentation slides are the ficus of this week as this is the time for final presentation week.
