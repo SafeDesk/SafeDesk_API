@@ -15,7 +15,6 @@ module SafeDesk
         present sos_list.order(created_at: "DESC")
       end
 
-
       desc 'create sos'
       params do
         requires :map_info, desc: "url"
@@ -23,11 +22,8 @@ module SafeDesk
       post do
         params["parent_id"] = @parent.id
         sos = So.create(params)
-        return {message: "SOS Created Successfully", status_code: 200, sos: sos}
+        return { message: "SOS Created Successfully", status_code: 200, sos: sos }
       end
-
-
-
 
       desc 'Delete sos'
       params do
@@ -36,14 +32,8 @@ module SafeDesk
       delete ":id" do
         sos = So.find params[:id]
         updated_sos = sos.delete
-        return {message: "sos Deleted Successfully", status_code: 200}
+        return { message: "sos Deleted Successfully", status_code: 200 }
       end
-
-
-
-
-
-
 
     end
   end

@@ -7,9 +7,7 @@ module SafeDesk
     prefix 'api'
     version 'v1', using: :path
 
-
     # before_do:
-
 
     helpers do
       def get_user
@@ -31,14 +29,12 @@ module SafeDesk
       end
     end
 
-
-
     desc 'user/pos login api'
     params do
       requires :email
       requires :password
     end
-    post "parent/login"do
+    post "parent/login" do
       parent = Parent.where(email: params[:email]).first
       return { status: false, message: "parent does not exist/authentication failed!", status_code: 401 } unless parent.present?
       # parent = parent.authenticate(params[:password])
@@ -52,7 +48,7 @@ module SafeDesk
             })
         }
       else
-        present status: false, message: "parent does not exist/authentication failed!" , status_code: 401
+        present status: false, message: "parent does not exist/authentication failed!", status_code: 401
       end
     end
 
@@ -87,16 +83,16 @@ module SafeDesk
     end
     post "parent/signup" do
       begin
-      params[:email]= params[:email].downcase
-      ActiveRecord::Base.transaction do
-        if Parent.where(email: params[:email]).first.present? || Child.where(email: params[:email]).first.present?
-          return {message: "This email exists already", status: 304}
+        params[:email] = params[:email].downcase
+        ActiveRecord::Base.transaction do
+          if Parent.where(email: params[:email]).first.present? || Child.where(email: params[:email]).first.present?
+            return { message: "This email exists already", status: 304 }
+          end
+          parent = Parent.create(params)
+          present parent
+        rescue => e
+          return e
         end
-        parent = Parent.create(params)
-        present parent
-      rescue =>e
-        return e
-      end
       end
     end
 
@@ -109,18 +105,18 @@ module SafeDesk
     end
     post "child/signup" do
       begin
-      params[:email]= params[:email].downcase
-      ActiveRecord::Base.transaction do
-        if Parent.where(email: params[:email]).first.present? || Child.where(email: params[:email]).first.present?
-          return {message: "This email exists already", status: 304}
+        params[:email] = params[:email].downcase
+        ActiveRecord::Base.transaction do
+          if Parent.where(email: params[:email]).first.present? || Child.where(email: params[:email]).first.present?
+            return { message: "This email exists already", status: 304 }
+          end
+          parent = Parent.where(email: params[:parent_email]).first
+          child = parent.child.create(params.except(:parent_email))
+          rewards = Reward.create(child_id: child.id, unclaimed: 0, redeemed: 0, parent_id: parent.id)
+          present child
+        rescue => e
+          return e
         end
-        parent = Parent.where(email: params[:parent_email]).first
-        child = parent.child.create(params.except(:parent_email))
-        rewards = Reward.create(child_id: child.id, unclaimed: 0, redeemed: 0, parent_id: parent.id)
-        present child
-      rescue =>e
-        return e
-      end
       end
     end
 
@@ -131,12 +127,12 @@ module SafeDesk
       Thread.current[:user] = @user
     end
 
-      mount SafeDesk::SosAPI
-      mount SafeDesk::ChoresAPI
-      mount SafeDesk::HomeworkAPI
-      mount SafeDesk::RewardsAPI
-      mount SafeDesk::VolunteerAPI
-      mount SafeDesk::RewardsAPI
+    mount SafeDesk::SosAPI
+    mount SafeDesk::ChoresAPI
+    mount SafeDesk::HomeworkAPI
+    mount SafeDesk::RewardsAPI
+    mount SafeDesk::VolunteerAPI
+    mount SafeDesk::RewardsAPI
 
   end
 end

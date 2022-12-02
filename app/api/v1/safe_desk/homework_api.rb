@@ -18,54 +18,43 @@ module SafeDesk
         present homework_list
       end
 
-
       desc 'create Homework'
       params do
 
-      requires :task_name, type: String, desc: "Mailer Config Id"
-      requires :points, type: Integer, desc: "Mailer Config Id"
-      requires :task_priority, type: Integer, desc: "Mailer Config Id"
-      requires :date_completed, type: Date, desc: "Mailer Config Id"
+        requires :task_name, type: String, desc: "Mailer Config Id"
+        requires :points, type: Integer, desc: "Mailer Config Id"
+        requires :task_priority, type: Integer, desc: "Mailer Config Id"
+        requires :date_completed, type: Date, desc: "Mailer Config Id"
       end
       post do
         params["parent_id"] = @parent.id
         homework = Homework.create(params)
-        return {message: "Homework Created Successfully", status_code: 200, Homework: homework}
+        return { message: "Homework Created Successfully", status_code: 200, Homework: homework }
       end
-
-
 
       desc 'edit (put) homework'
       params do
-      requires :task_name, type: String, desc: "Mailer Config Id"
-      requires :points, type: Integer, desc: "Mailer Config Id"
-      requires :task_priority, type: Integer, desc: "Mailer Config Id"
-      requires :date_completed, desc: "Mailer Config Id"
-      requires :id, type: String, desc: "Mailer Config Id"
+        requires :task_name, type: String, desc: "Mailer Config Id"
+        requires :points, type: Integer, desc: "Mailer Config Id"
+        requires :task_priority, type: Integer, desc: "Mailer Config Id"
+        requires :date_completed, desc: "Mailer Config Id"
+        requires :id, type: String, desc: "Mailer Config Id"
       end
       put ":id" do
         homework = Homework.find params[:id]
         homework.update(params)
-        return {message: "homework edited Successfully", status_code: 200, homework: homework}
+        return { message: "homework edited Successfully", status_code: 200, homework: homework }
       end
-
-
 
       desc 'Delete homework'
       params do
-      requires :id, type: String, desc: "Mailer Config Id"
+        requires :id, type: String, desc: "Mailer Config Id"
       end
       delete ":id" do
         homework = Homework.find params[:id]
         updated_homework = homework.delete
-        return {message: "homework Deleted Successfully", status_code: 200}
+        return { message: "homework Deleted Successfully", status_code: 200 }
       end
-
-
-
-
-
-
 
     end
   end
